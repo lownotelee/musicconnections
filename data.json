@@ -1,7 +1,7 @@
 {
   "artists": [
     { "id": "maynardjameskeenan", "label": "Maynard James Keenan", "kind": "person", "aliases": ["MJK"] },
-    { "id": "tool", "label": "Tool", "kind": "band" },
+    { "id": "tool", "label": "Tool", "kind": "band", "apple":"https://music.apple.com/au/artist/tool/140870416" },
     { "id": "apc", "label": "A Perfect Circle", "kind": "band", "aliases": ["APC"] },
     { "id": "puscifer", "label": "Puscifer", "kind": "band" },
     { "id": "ratm", "label": "Rage Against The Machine", "kind": "band", "aliases": ["RATM"] },
