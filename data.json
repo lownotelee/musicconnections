@@ -411,7 +411,8 @@
       "to": "nine-inch-nails",
       "rel": "collaboration",
       "source": "https://musicbrainz.org/release/44cbff72-9db6-4ad0-b4c8-b14986afc93a",
-      "song": "Various songs from With Teeth",
+      "song": "The Collector",
+      "by": "Drummer on various songs on the album With Teeth",
       "apple": "https://music.apple.com/us/song/the-collector/1440852038",
       "verified": true
     },
@@ -507,6 +508,7 @@
       "rel": "guest_performer",
       "source": "https://musicbrainz.org/recording/196f8ef9-d6d3-4541-92df-6694fcf4bf2b",
       "song": "Half of My Heart",
+      "by": "John Mayer · guest vocals by Taylor Swift",
       "apple": "https://music.apple.com/us/song/half-of-my-heart/337970492",
       "verified": true
     }
