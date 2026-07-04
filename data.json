@@ -18,7 +18,7 @@
     { "from": "maynardjameskeenan", "to": "tool", "rel": "member",
       "source": "https://musicbrainz.org/search?query=Tool&type=artist",
       "addedBy": "@seed", "verified": true },
-    { "from": "deftones", "to": "chinomoreno", "rel": "member",
+    { "from": "chinomoreno", "to": "deftones", "rel": "member",
       "source": "https://musicbrainz.org/artist/e61400d1-9434-4abc-ac7a-4f1dad60cfc7",
       "addedBy": "@seed", "verified": true },
     { "from": "chinomoreno", "to": "crosses", "rel": "member",
