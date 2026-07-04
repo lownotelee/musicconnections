@@ -207,6 +207,46 @@
       "id": "taylor-swift",
       "label": "Taylor Swift",
       "kind": "person"
+    },
+    {
+      "id": "adrian-belew",
+      "label": "Adrian Belew",
+      "kind": "person"
+    },
+    {
+      "id": "king-crimson",
+      "label": "King Crimson",
+      "kind": "band"
+    },
+    {
+      "id": "gavin-harrison",
+      "label": "Gavin Harrison",
+      "kind": "person"
+    },
+    {
+      "id": "porcupine-tree",
+      "label": "Porcupine Tree",
+      "kind": "band"
+    },
+    {
+      "id": "steven-wilson",
+      "label": "Steven Wilson",
+      "kind": "person"
+    },
+    {
+      "id": "storm-corrosion",
+      "label": "Storm Corrosion",
+      "kind": "band"
+    },
+    {
+      "id": "mikael-akerfeldt",
+      "label": "Mikael Åkerfeldt",
+      "kind": "person"
+    },
+    {
+      "id": "opeth",
+      "label": "Opeth",
+      "kind": "band"
     }
   ],
   "connections": [
@@ -510,6 +550,65 @@
       "song": "Half of My Heart",
       "by": "John Mayer · guest vocals by Taylor Swift",
       "apple": "https://music.apple.com/us/song/half-of-my-heart/337970492",
+      "verified": true
+    },
+    {
+      "from": "adrian-belew",
+      "to": "nine-inch-nails",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/73c3f499-60e2-44e1-81dd-7fe2191461fa/relationships",
+      "by": "Member of the live band in 2013, credited for songs across several albums",
+      "verified": true
+    },
+    {
+      "from": "adrian-belew",
+      "to": "king-crimson",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/73c3f499-60e2-44e1-81dd-7fe2191461fa/relationships",
+      "by": "Guitar & vocals from 1981 to 2013",
+      "verified": true
+    },
+    {
+      "from": "gavin-harrison",
+      "to": "king-crimson",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/60ac8ed5-bff9-41ed-bc5e-b889fd5cbd1d/relationships",
+      "by": "Drummer 2007-current",
+      "verified": true
+    },
+    {
+      "from": "gavin-harrison",
+      "to": "porcupine-tree",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/60ac8ed5-bff9-41ed-bc5e-b889fd5cbd1d/relationships",
+      "by": "Drums from 2002-2010, 2021-current",
+      "verified": true
+    },
+    {
+      "from": "steven-wilson",
+      "to": "porcupine-tree",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/169c4c28-858e-497b-81a4-8bc15e0026ea",
+      "verified": true
+    },
+    {
+      "from": "steven-wilson",
+      "to": "storm-corrosion",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/4f1f3fbc-a043-4280-9a42-f238f4740065/relationships",
+      "verified": true
+    },
+    {
+      "from": "mikael-kerfeldt",
+      "to": "storm-corrosion",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/4f1f3fbc-a043-4280-9a42-f238f4740065/relationships"
+    },
+    {
+      "from": "mikael-kerfeldt",
+      "to": "opeth",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/c14b4180-dc87-481e-b17a-64e4150f90f6/relationships",
       "verified": true
     }
   ]
