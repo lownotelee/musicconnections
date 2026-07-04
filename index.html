@@ -1,51 +1,434 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.6">
-  <style type="text/css">
-    body {background-color: #0f1014}
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #e1e3eb; -webkit-text-stroke: #e1e3eb; min-height: 15.0px}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #787d8f; -webkit-text-stroke: #787d8f}
-    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #787d8f; -webkit-text-stroke: #787d8f; min-height: 15.0px}
-    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.5px 'Helvetica Neue'; color: #787d8f; -webkit-text-stroke: #787d8f; background-color: #4dc9b7; min-height: 15.0px}
-    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.5px 'Helvetica Neue'; color: #787d8f; -webkit-text-stroke: #787d8f; background-color: #14161c}
-    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.5px 'Helvetica Neue'; color: #787d8f; -webkit-text-stroke: #787d8f; background-color: #ea912f; min-height: 15.0px}
-    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.5px 'Helvetica Neue'; color: #787d8f; -webkit-text-stroke: #787d8f}
-    p.p9 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.5px 'Helvetica Neue'; color: #787d8f; -webkit-text-stroke: #787d8f; min-height: 15.0px}
-    p.p10 {margin: 0.0px 0.0px 1.0px 0.0px; font: 10.5px 'Helvetica Neue'; color: #787d8f; -webkit-text-stroke: #787d8f}
-    p.p11 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; -webkit-text-stroke: #000000; min-height: 13.0px}
-    p.p12 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.5px 'Helvetica Neue'; color: #787d8f; -webkit-text-stroke: #787d8f; background-color: #20242e; min-height: 15.0px}
-    p.p13 {margin: 0.0px 0.0px 13.0px 0.0px; font: 13.0px 'Helvetica Neue'; color: #787d8f; -webkit-text-stroke: #787d8f}
-    span.s1 {font-kerning: none}
-    span.s2 {font-kerning: none; background-color: #14161c}
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Collab Graph — musician connection map</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.9/dist/vis-network.min.js"></script>
+<style>
+  :root{
+    --bg:#12141a;
+    --bg-panel:#1a1d26;
+    --line:#2b303d;
+    --ink:#e7e9ef;
+    --ink-dim:#8b90a0;
+    --band:#f0a23c;      /* bands = warm amber */
+    --person:#5ad1c4;    /* people = cool teal */
+    --guest:#f0a23c;     /* guest-feature edges */
+    --member:#5f6472;    /* membership edges */
+    --focus:#ffffff;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;}
+  #app{display:flex;height:100%;}
+  #graph{flex:1;min-width:0;position:relative;}
+  #graph::after{content:"drag to move · scroll to zoom · click a link to hear it";
+    position:absolute;left:14px;bottom:12px;font-size:11px;letter-spacing:.03em;
+    color:var(--ink-dim);pointer-events:none;}
+
+  aside{width:320px;flex:none;background:var(--bg-panel);border-left:1px solid var(--line);
+    display:flex;flex-direction:column;}
+  .brand{padding:18px 20px 14px;border-bottom:1px solid var(--line);}
+  .brand h1{margin:0;font-size:15px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;}
+  .brand p{margin:6px 0 0;font-size:12px;line-height:1.5;color:var(--ink-dim);}
+
+  .search{padding:14px 20px;border-bottom:1px solid var(--line);}
+  .field{position:relative;}
+  .field .mag{position:absolute;left:11px;top:50%;transform:translateY(-50%);
+    color:var(--ink-dim);pointer-events:none;}
+  .field input{width:100%;background:#0e1015;border:1px solid var(--line);border-radius:9px;
+    color:var(--ink);font-size:13.5px;padding:10px 12px 10px 34px;outline:none;
+    font-family:inherit;}
+  .field input:focus{border-color:var(--person);}
+  .field input::placeholder{color:var(--ink-dim);}
+  .results{position:absolute;top:100%;left:0;right:0;margin-top:6px;background:#0e1015;
+    border:1px solid var(--line);border-radius:9px;overflow:hidden;z-index:50;
+    box-shadow:0 14px 34px rgba(0,0,0,.45);}
+  .results.hidden{display:none;}
+  .result{display:flex;justify-content:space-between;align-items:center;gap:10px;
+    padding:9px 12px;font-size:13.5px;cursor:pointer;}
+  .result.active{background:#191d27;}
+  .rdot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:9px;vertical-align:middle;}
+  .rkind{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-dim);flex:none;}
+  .rname{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .rdis{color:var(--ink-dim);font-size:11.5px;margin-left:7px;}
+  .rdis::before{content:"· ";}
+  .result-empty{padding:11px 12px;font-size:12.5px;color:var(--ink-dim);line-height:1.5;}
+  .result-empty b{color:var(--ink);font-weight:600;}
+
+  .filters{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:11px;}
+  .filter-head{margin:0 0 1px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim);}
+  .tog{display:flex;align-items:center;gap:10px;cursor:pointer;font-size:12.5px;color:var(--ink-dim);
+    user-select:none;}
+  .tog:hover{color:var(--ink);}
+  .tog input{position:absolute;opacity:0;width:0;height:0;}
+  .sw{width:34px;height:19px;border-radius:20px;background:#2b303d;position:relative;flex:none;
+    transition:background .15s;}
+  .sw::after{content:"";position:absolute;top:2px;left:2px;width:15px;height:15px;border-radius:50%;
+    background:#8b90a0;transition:transform .15s,background .15s;}
+  .tog input:checked + .sw{background:var(--person);}
+  .tog input:checked + .sw::after{transform:translateX(15px);background:#0d1014;}
+  .tog input:focus-visible + .sw{outline:2px solid var(--focus);outline-offset:2px;}
+
+  .legend{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:9px;}
+  .legrow{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--ink-dim);}
+  .dot{width:12px;height:12px;border-radius:50%;flex:none;}
+  .dot.band{background:var(--band);}
+  .dot.person{background:var(--person);}
+  .swatch{width:26px;height:0;border-top:2px solid var(--member);flex:none;}
+  .swatch.guest{border-top:2px dashed var(--guest);}
+
+  #detail{padding:18px 20px;overflow:auto;flex:1;}
+  #detail .empty{font-size:13px;color:var(--ink-dim);line-height:1.6;}
+  .kicker{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim);margin:0 0 4px;}
+  #detail h2{margin:0 0 2px;font-size:20px;line-height:1.15;}
+  .sub{font-size:12.5px;color:var(--ink-dim);margin:0 0 16px;}
+  .disamb{font-size:12.5px;color:var(--ink-dim);font-style:italic;margin:-2px 0 6px;}
+  .alinks{display:flex;gap:8px;flex-wrap:wrap;margin:2px 0 14px;}
+  .alink{font-size:12px;text-decoration:none;padding:5px 11px;border-radius:20px;
+    border:1px solid var(--line);color:var(--person);}
+  .alink:hover{border-color:var(--person);}
+  .alink.apple{color:var(--band);}
+  .alink.apple:hover{border-color:var(--band);}
+  .creditline{font-size:13px;line-height:1.5;padding:9px 0;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;gap:10px;cursor:pointer;}
+  .creditline:hover{color:var(--focus);}
+  .creditline .rel{color:var(--ink-dim);font-size:11.5px;white-space:nowrap;}
+
+  .song{margin-top:16px;padding:14px;background:#141720;border:1px solid var(--line);border-radius:10px;}
+  .song .track{font-size:15px;font-weight:600;margin:0 0 3px;}
+  .song .by{font-size:12px;color:var(--ink-dim);margin:0 0 12px;}
+  .play{display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+    font-size:13px;font-weight:600;padding:9px 14px;border-radius:8px;color:#0d1014;
+    background:var(--person);margin:0 8px 8px 0;}
+  .play.apple{background:var(--band);}
+  .note{font-size:11px;color:var(--ink-dim);margin-top:8px;line-height:1.5;}
+
+  .prov{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);
+    display:flex;flex-direction:column;gap:8px;}
+  .prov-row{font-size:12px;color:var(--ink-dim);display:flex;align-items:center;gap:8px;}
+  .prov-row a{color:var(--person);text-decoration:none;}
+  .prov-row a:hover{text-decoration:underline;}
+  .prov-missing{color:#c76b6b;}
+  .added{font-variant:small-caps;letter-spacing:.02em;}
+  .badge{font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:3px 8px;border-radius:20px;
+    text-transform:uppercase;flex:none;}
+  .badge.ok{background:rgba(90,209,196,.14);color:var(--person);}
+  .badge.pending{background:rgba(240,162,60,.14);color:var(--band);}
+
+  @media(max-width:720px){
+    #app{flex-direction:column;}
+    aside{width:auto;height:44%;border-left:none;border-top:1px solid var(--line);}
+    #graph::after{display:none;}
+  }
+</style>
 </head>
 <body>
-<p class="p1"><span class="s1"></span><br></p>
-<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; font: 15.0px 'Helvetica Neue'; color: #e1e3eb; -webkit-text-stroke: #e1e3eb"><span class="s2"><b>COLLAB GRAPH</b><b></b></span></h1>
-<p class="p3"><span class="s2">Who played on what. Tap an artist to see their world, or tap a connection to hear the song behind it.</span></p>
-<p class="p4"><span class="s1"></span><br></p>
-<p class="p5"><span class="s1"></span><br></p>
-<p class="p6"><span class="s1">Musician</span></p>
-<p class="p7"><span class="s1"></span><br></p>
-<p class="p8"><span class="s2">Band / project</span></p>
-<p class="p9"><span class="s1"></span><br></p>
-<p class="p8"><span class="s2">Member of</span></p>
-<p class="p9"><span class="s1"></span><br></p>
-<p class="p8"><span class="s2">Guest appearance</span></p>
-<p class="p9"><span class="s1"></span><br></p>
-<p class="p8"><span class="s2">Faint = unverified</span></p>
-<p class="p10"><span class="s2">FILTERS</span></p>
-<p class="p11"><span class="s1"></span><br></p>
-<p class="p12"><span class="s1"></span><br></p>
-<p class="p8"><span class="s2">Hide cover versions</span></p>
-<p class="p11"><span class="s1"></span><br></p>
-<p class="p12"><span class="s1"></span><br></p>
-<p class="p8"><span class="s2">Hide unverified</span></p>
-<p class="p13"><span class="s2">Nothing selected yet. Click a band or an artist in the graph to start exploring the web around them.</span></p>
+<div id="app">
+  <div id="graph"></div>
+  <aside>
+    <div class="brand">
+      <h1>Collab&nbsp;Graph</h1>
+      <p>Who played on what. Tap an artist to see their world, or tap a connection to hear the song behind it.</p>
+    </div>
+    <div class="search">
+      <div class="field">
+        <svg class="mag" width="15" height="15" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+        <input id="q" type="text" placeholder="Search artists & bands…"
+               autocomplete="off" spellcheck="false" aria-label="Search artists and bands" />
+        <div id="results" class="results hidden"></div>
+      </div>
+    </div>
+    <div class="legend">
+      <div class="legrow"><span class="dot person"></span>Musician</div>
+      <div class="legrow"><span class="dot band"></span>Band / project</div>
+      <div class="legrow"><span class="swatch"></span>Member of</div>
+      <div class="legrow"><span class="swatch guest"></span>Guest appearance</div>
+      <div class="legrow"><span class="swatch" style="opacity:.28"></span>Faint = unverified</div>
+    </div>
+    <div class="filters">
+      <p class="filter-head">Filters</p>
+      <label class="tog"><input type="checkbox" id="f-covers"><span class="sw"></span>Hide cover versions</label>
+      <label class="tog"><input type="checkbox" id="f-unverified"><span class="sw"></span>Hide unverified</label>
+    </div>
+    <div id="detail"><p class="empty">Nothing selected yet. Click <strong>Maynard James Keenan</strong> in the graph to start exploring the web around him.</p></div>
+  </aside>
+</div>
+
+<script>
+/* ------------------------------------------------------------------ *
+ *  DATA  — the graph reads data.json (the single source of truth),
+ *  fetched at load. ARTISTS and LINKS are populated by loadData() below;
+ *  to grow the site you edit data.json, not this file.
+ * ------------------------------------------------------------------ */
+let ARTISTS = [];   // populated from data.json
+
+/* Every connection now carries provenance:
+ *   source   — a link to the CREDIT that proves it (MusicBrainz / Apple Music
+ *              credits / liner notes). A bare streaming link is NOT proof.
+ *   addedBy  — who submitted it (attribution + accountability).
+ *   verified — has a maintainer confirmed the source? Unverified edges still
+ *              show, but dimmed, so the graph grows without gatekeeping every add.
+ * (source URLs below are placeholder MusicBrainz searches — swap for the
+ *  specific credit page. "Know Your Enemy" is left unverified on purpose,
+ *  and the Flaming Lips track carries isCover:true — both demonstrate how
+ *  a connection can be present but filtered out by the viewer.) */
+let LINKS = [];     // populated from data.json
+
+/* ------------------------------------------------------------------ *
+ *  RENDER  — you shouldn't need to touch anything below here.
+ * ------------------------------------------------------------------ */
+const css = getComputedStyle(document.documentElement);
+const C = n => css.getPropertyValue(n).trim();
+
+function toNode(a){
+  return {
+    id:a.id, label:a.label, kind:a.kind, disambiguation:a.disambiguation,
+    shape: a.kind==="band" ? "hexagon" : "dot",
+    size: a.kind==="band" ? 20 : 15,
+    color:{
+      background: a.kind==="band" ? C("--band") : C("--person"),
+      border:     a.kind==="band" ? C("--band") : C("--person"),
+      highlight:{ background:a.kind==="band"?C("--band"):C("--person"), border:C("--focus") }
+    },
+    font:{ color:C("--ink"), size:14, face:"-apple-system,Segoe UI,Helvetica,Arial", strokeWidth:0 }
+  };
+}
+const nodes = new vis.DataSet();
+
+// Human-readable names for each relationship type in the canonical schema.
+const REL = {
+  member:          { chip:"member",        head:"Membership" },
+  collaboration:   { chip:"collaboration", head:"Collaboration" },
+  guest_performer: { chip:"guest",         head:"Guest appearance" },
+};
+
+function toEdge(l,i){
+  const perf = l.rel !== "member";               // membership vs a performance credit
+  return {
+    id:i, from:l.from, to:l.to, data:l,
+    dashes: perf,
+    width: perf ? 2 : 1.5,
+    color:{ color: perf ? C("--guest") : C("--member"),
+            highlight:C("--focus"),
+            opacity: l.verified===false ? 0.28 : (perf ? 0.9 : 0.6) }  // unverified = faint
+  };
+}
+const edges = new vis.DataSet();
+
+/* ---- Filtering ---- one rule, used by both the graph and the side panel. */
+const filters = { hideCovers:false, hideUnverified:false };
+function edgeVisible(l){
+  if(filters.hideCovers && l.isCover) return false;
+  if(filters.hideUnverified && l.verified===false) return false;
+  return true;
+}
+// A node stays only while at least one of its connections is still showing.
+function nodeVisible(n){
+  return edges.get().some(e => edgeVisible(e.data) && (e.from===n.id || e.to===n.id));
+}
+const edgesView = new vis.DataView(edges, { filter:e => edgeVisible(e.data) });
+const nodesView = new vis.DataView(nodes, { filter:n => nodeVisible(n) });
+
+const network = new vis.Network(document.getElementById("graph"), {nodes:nodesView, edges:edgesView}, {
+  physics:{ barnesHut:{ gravitationalConstant:-4200, springLength:150, springConstant:0.05 },
+            stabilization:{ iterations:220 } },
+  interaction:{ hover:true, tooltipDelay:99999 },
+  nodes:{ borderWidth:2 }
+});
+
+const detail = document.getElementById("detail");
+
+function artist(id){ return ARTISTS.find(a=>a.id===id); }
+
+function showNode(id){
+  const a = artist(id);
+  const mine = LINKS.filter(l => (l.from===id || l.to===id) && edgeVisible(l));
+  const rows = mine.map(l => {
+    const otherId = l.from===id ? l.to : l.from;
+    const other = artist(otherId).label;
+    const rel = (REL[l.rel] || REL.guest_performer).chip;
+    return `<div class="creditline" data-edge="${LINKS.indexOf(l)}">
+              <span>${other}</span><span class="rel">${rel}</span></div>`;
+  }).join("");
+  const plinks = [
+    a.spotify ? `<a class="alink" href="${a.spotify}" target="_blank" rel="noopener">Spotify ↗</a>` : "",
+    a.apple   ? `<a class="alink apple" href="${a.apple}" target="_blank" rel="noopener">Apple Music ↗</a>` : ""
+  ].join("");
+  detail.innerHTML =
+    `<p class="kicker">${a.kind==="band"?"Band / project":"Musician"}</p>
+     <h2>${a.label}</h2>
+     ${a.disambiguation ? `<p class="disamb">${a.disambiguation}</p>` : ""}
+     ${plinks ? `<div class="alinks">${plinks}</div>` : ""}
+     <p class="sub">${mine.length} connection${mine.length!==1?"s":""}</p>
+     ${rows}`;
+  detail.querySelectorAll(".creditline").forEach(el=>{
+    el.onclick = () => { const e=+el.dataset.edge; network.selectEdges([e]); showEdge(e); };
+  });
+}
+
+// Provenance block — shown on every connection so a claim can be verified fast.
+function provenance(l){
+  const badge = l.verified
+    ? `<span class="badge ok">✓ verified</span>`
+    : `<span class="badge pending">• unverified</span>`;
+  const src = l.source
+    ? `<a href="${l.source}" target="_blank" rel="noopener">view credit ↗</a>`
+    : `<span class="prov-missing">no source on file</span>`;
+  return `<div class="prov">
+            <div class="prov-row">${badge}<span class="added">added by ${l.addedBy||"unknown"}</span></div>
+            <div class="prov-row">Source: ${src}</div>
+          </div>`;
+}
+
+function showEdge(i){
+  const l = LINKS[i];
+  const fromL = artist(l.from).label, toL = artist(l.to).label;
+  if(l.rel==="member"){
+    detail.innerHTML =
+      `<p class="kicker">Membership</p>
+       <h2>${fromL}</h2>
+       <p class="sub">is a member of <strong>${toL}</strong></p>
+       ${provenance(l)}`;
+    return;
+  }
+  detail.innerHTML =
+    `<p class="kicker">${(REL[l.rel] || REL.guest_performer).head}</p>
+     <h2>${fromL}</h2>
+     <p class="sub">appears on a track by <strong>${toL}</strong></p>
+     <div class="song">
+       <p class="track">${l.song}</p>
+       <p class="by">${l.by}</p>
+       <a class="play" href="${l.spotify}" target="_blank" rel="noopener">▶ Spotify</a>
+       <a class="play apple" href="${l.apple}" target="_blank" rel="noopener">▶ Apple Music</a>
+       <p class="note">Demo uses search links. Replace with each track's real
+       “Copy Song Link” share URL and they'll open the exact recording.</p>
+     </div>
+     ${provenance(l)}`;
+}
+
+network.on("click", p => {
+  if(p.nodes.length){ showNode(p.nodes[0]); }
+  else if(p.edges.length){ showEdge(p.edges[0]); }
+});
+
+/* ------------------------------------------------------------------ *
+ *  SEARCH  — find an artist, then fly to it and open its panel.
+ *  Matches on label (substring, case-insensitive). At small scale a
+ *  pan+zoom is right; once the graph is large you'd switch this to
+ *  FILTER the view to the picked node's neighbourhood instead.
+ * ------------------------------------------------------------------ */
+const q = document.getElementById("q");
+const results = document.getElementById("results");
+let current = [], active = -1;
+
+const kindLabel = k => k==="band" ? "Band" : "Musician";
+const kindColor = k => k==="band" ? C("--band") : C("--person");
+
+function closeResults(){ results.classList.add("hidden"); active = -1; }
+function paintActive(){
+  results.querySelectorAll(".result").forEach((el,i)=>el.classList.toggle("active", i===active));
+}
+
+function renderResults(){
+  if(!current.length){
+    results.innerHTML = `<div class="result-empty">No artist matches. Missing? <b>Add it.</b></div>`;
+    results.classList.remove("hidden"); return;
+  }
+  results.innerHTML = current.map((a,i)=>
+    `<div class="result${i===active?' active':''}" data-id="${a.id}">
+       <span class="rname"><span class="rdot" style="background:${kindColor(a.kind)}"></span>${a.label}${
+         a.disambiguation ? `<span class="rdis">${a.disambiguation}</span>` : ""}</span>
+       <span class="rkind">${kindLabel(a.kind)}</span>
+     </div>`).join("");
+  results.querySelectorAll(".result").forEach(el=>{
+    // mousedown (not click) so selection fires before the input's blur closes the list
+    el.onmousedown = e => { e.preventDefault(); pick(el.dataset.id); };
+    el.onmouseenter = () => { active = current.findIndex(a=>a.id===el.dataset.id); paintActive(); };
+  });
+  results.classList.remove("hidden");
+}
+
+function search(term){
+  const t = term.trim().toLowerCase();
+  if(!t){ current = []; closeResults(); return; }
+  current = ARTISTS.filter(a => a.label.toLowerCase().includes(t)).slice(0,8);
+  active = current.length ? 0 : -1;
+  renderResults();
+}
+
+function pick(id){
+  q.value = ""; closeResults(); q.blur();
+  focusArtist(id);
+}
+
+function focusArtist(id){
+  showNode(id);
+  if(nodesView.get(id)){            // only fly to it if it's currently visible
+    network.selectNodes([id]);
+    network.focus(id, { scale:1.15, animation:{ duration:650, easingFunction:"easeInOutQuad" } });
+  }
+}
+
+q.addEventListener("input", e => search(e.target.value));
+q.addEventListener("focus", () => { if(q.value.trim()) search(q.value); });
+q.addEventListener("keydown", e => {
+  if(e.key==="ArrowDown"){ e.preventDefault(); if(current.length){ active=(active+1)%current.length; paintActive(); } }
+  else if(e.key==="ArrowUp"){ e.preventDefault(); if(current.length){ active=(active-1+current.length)%current.length; paintActive(); } }
+  else if(e.key==="Enter"){ if(active>=0 && current[active]) pick(current[active].id); }
+  else if(e.key==="Escape"){ q.value=""; closeResults(); q.blur(); }
+});
+document.addEventListener("click", e => { if(!e.target.closest(".search")) closeResults(); });
+
+/* ---- Filter toggles ---- flip state, then re-apply to graph and panel. */
+const fCovers = document.getElementById("f-covers");
+const fUnverified = document.getElementById("f-unverified");
+let lastNode = null;                          // remember what the panel is showing
+const _showNode = showNode;
+showNode = function(id){ lastNode = id; _showNode(id); };
+
+function applyFilters(){
+  filters.hideCovers = fCovers.checked;
+  filters.hideUnverified = fUnverified.checked;
+  edgesView.refresh();
+  nodesView.refresh();
+  if(lastNode) _showNode(lastNode);           // keep the open panel in sync
+}
+fCovers.addEventListener("change", applyFilters);
+fUnverified.addEventListener("change", applyFilters);
+
+/* ------------------------------------------------------------------ *
+ *  DATA LOADING  — fetch data.json and build the graph from it.
+ *  Over HTTP (GitHub Pages, or a local server) this just works.
+ *  Opened as a bare file:// it can't fetch — see the message below.
+ * ------------------------------------------------------------------ */
+async function loadData(){
+  try{
+    const res = await fetch("data.json", { cache:"no-store" });
+    if(!res.ok) throw new Error("HTTP " + res.status);
+    const data = await res.json();
+    ARTISTS = data.artists || [];
+    LINKS   = data.connections || [];
+    edges.add(LINKS.map(toEdge));   // edges first, so node visibility can see them
+    nodes.add(ARTISTS.map(toNode));
+    edgesView.refresh();
+    nodesView.refresh();
+    network.fit();
+  }catch(err){
+    console.error("Could not load data.json:", err);
+    detail.innerHTML =
+      `<p class="empty">Couldn't load <code>data.json</code> (${err.message}).<br><br>` +
+      `This page loads its data over HTTP. Open it via your live GitHub&nbsp;Pages URL, ` +
+      `or run a local server from the project folder ` +
+      `(<code>python3 -m http.server</code>, then visit localhost:8000) — ` +
+      `not by double-clicking the file.</p>`;
+  }
+}
+loadData();
+
+</script>
 </body>
 </html>
