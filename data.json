@@ -424,19 +424,22 @@
       "from": "john-paul-jones",
       "to": "led-zeppelin",
       "rel": "member",
-      "source": "https://musicbrainz.org/artist/4490113a-3880-4f5b-a39b-105bfceaed04/relationships"
+      "source": "https://musicbrainz.org/artist/4490113a-3880-4f5b-a39b-105bfceaed04/relationships",
+      "verified": true
     },
     {
       "from": "josh-homme",
       "to": "them-crooked-vultures",
       "rel": "member",
-      "source": "https://musicbrainz.org/artist/dbecd515-aac9-4e7b-808e-bca22809c316/relationships"
+      "source": "https://musicbrainz.org/artist/dbecd515-aac9-4e7b-808e-bca22809c316/relationships",
+      "verified": true
     },
     {
       "from": "josh-homme",
       "to": "queens-of-the-stone-age",
       "rel": "member",
-      "source": "https://musicbrainz.org/artist/dbecd515-aac9-4e7b-808e-bca22809c316/relationships"
+      "source": "https://musicbrainz.org/artist/dbecd515-aac9-4e7b-808e-bca22809c316/relationships",
+      "verified": true
     },
     {
       "from": "josh-homme",
@@ -599,13 +602,14 @@
       "verified": true
     },
     {
-      "from": "mikael-kerfeldt",
+      "from": "mikael-akerfeldt",
       "to": "storm-corrosion",
       "rel": "member",
-      "source": "https://musicbrainz.org/artist/4f1f3fbc-a043-4280-9a42-f238f4740065/relationships"
+      "source": "https://musicbrainz.org/artist/4f1f3fbc-a043-4280-9a42-f238f4740065/relationships",
+      "verified": true
     },
     {
-      "from": "mikael-kerfeldt",
+      "from": "mikael-akerfeldt",
       "to": "opeth",
       "rel": "member",
       "source": "https://musicbrainz.org/artist/c14b4180-dc87-481e-b17a-64e4150f90f6/relationships",
