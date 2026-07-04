@@ -1,0 +1,98 @@
+name: Add a connection
+description: Suggest a link between two artists — a band membership, a collaboration, or a guest performance.
+title: "[connection]: <from> → <to>"
+labels: ["connection", "needs-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for adding to the map! A few things before you start:
+        - We map **direct** relationships only: `member`, `collaboration`, `guest_performer`.
+        - **Covers, samples, and remixes are out of scope** — please don't submit those.
+        - Every connection needs a **source that proves the credit** (MusicBrainz, Apple Music credits, liner notes) — **not** a bare Spotify/Apple *listening* link.
+
+  - type: dropdown
+    id: rel
+    attributes:
+      label: Relationship type
+      description: What kind of link is this?
+      options:
+        - "member — a person is in this band"
+        - "collaboration — two artists co-created a track together"
+        - "guest_performer — an artist guested on someone else's track"
+    validations:
+      required: true
+
+  - type: input
+    id: from
+    attributes:
+      label: From (the person / guest / collaborator)
+      description: For a membership, the person. For a guest spot, the guest.
+      placeholder: Maynard James Keenan
+    validations:
+      required: true
+
+  - type: input
+    id: to
+    attributes:
+      label: To (the band / host act)
+      description: For a membership, the band. For a guest spot, the act whose track it is.
+      placeholder: Deftones
+    validations:
+      required: true
+
+  - type: input
+    id: song
+    attributes:
+      label: Song / track
+      description: Required for collaborations and guest performances. Leave blank for a band membership.
+      placeholder: Passenger
+    validations:
+      required: false
+
+  - type: input
+    id: source
+    attributes:
+      label: Source — a link to the CREDIT
+      description: "MusicBrainz recording/relationship page, Apple Music credits, or liner notes. A plain Spotify/Apple listening link is NOT accepted here — it proves the song exists, not who's on it."
+      placeholder: https://musicbrainz.org/recording/...
+    validations:
+      required: true
+
+  - type: input
+    id: spotify
+    attributes:
+      label: Spotify link (optional)
+      description: The track's "Copy Song Link" share URL — powers the play button.
+      placeholder: https://open.spotify.com/track/...
+    validations:
+      required: false
+
+  - type: input
+    id: apple
+    attributes:
+      label: Apple Music link (optional)
+      placeholder: https://music.apple.com/...
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: cover
+    attributes:
+      label: Is this a cover?
+      description: Tick only if the guest performance is of a song originated by a third party (e.g. a Beatles cover). The connection is still valid — this just tags it so viewers can filter it.
+      options:
+        - label: This performance is a cover of another artist's song
+          required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Before you submit
+      options:
+        - label: My source shows the actual credit (not just a streaming link)
+          required: true
+        - label: This is a member / collaboration / guest performance (not a cover, sample, or remix as the relationship itself)
+          required: true
+        - label: I've checked this connection isn't already in the graph
+          required: true
