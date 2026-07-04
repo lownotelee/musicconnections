@@ -18,27 +18,25 @@
       "id": "apc",
       "label": "A Perfect Circle",
       "kind": "band",
-      "aliases": [
-        "APC"
-      ]
+      "apple": "https://music.apple.com/us/artist/a-perfect-circle/652503"
     },
     {
       "id": "puscifer",
       "label": "Puscifer",
-      "kind": "band"
+      "kind": "band",
+      "apple": "https://music.apple.com/us/artist/puscifer/48261730"
     },
     {
       "id": "ratm",
       "label": "Rage Against The Machine",
       "kind": "band",
-      "aliases": [
-        "RATM"
-      ]
+      "apple": "https://music.apple.com/us/artist/rage-against-the-machine/899409"
     },
     {
       "id": "deftones",
       "label": "Deftones",
-      "kind": "band"
+      "kind": "band",
+      "apple": "https://music.apple.com/us/artist/deftones/1092903"
     },
     {
       "id": "chinomoreno",
@@ -81,7 +79,8 @@
     {
       "id": "flaminglips",
       "label": "The Flaming Lips",
-      "kind": "band"
+      "kind": "band",
+      "apple": "https://music.apple.com/us/artist/the-flaming-lips/156604"
     },
     {
       "id": "blink-182",
@@ -102,7 +101,8 @@
     {
       "id": "the-smashing-pumpkins",
       "label": "The Smashing Pumpkins",
-      "kind": "band"
+      "kind": "band",
+      "apple": "https://music.apple.com/us/artist/the-smashing-pumpkins/1646302"
     },
     {
       "id": "devo",
@@ -127,21 +127,60 @@
     {
       "id": "nirvana",
       "label": "Nirvana",
-      "kind": "band"
+      "kind": "band",
+      "apple": "https://music.apple.com/us/artist/nirvana/112018"
     },
     {
       "id": "them-crooked-vultures",
       "label": "Them Crooked Vultures",
-      "kind": "band"
+      "kind": "band",
+      "apple": "https://music.apple.com/us/artist/them-crooked-vultures/337312823"
     },
     {
       "id": "led-zeppelin",
       "label": "Led Zeppelin",
-      "kind": "band"
+      "kind": "band",
+      "apple": "https://music.apple.com/us/artist/led-zeppelin/994656"
     },
     {
       "id": "queens-of-the-stone-age",
       "label": "Queens of the Stone Age",
+      "kind": "band",
+      "apple": "https://music.apple.com/us/artist/queens-of-the-stone-age/857919"
+    },
+    {
+      "id": "john-paul-jones",
+      "label": "John Paul Jones",
+      "kind": "person"
+    },
+    {
+      "id": "josh-homme",
+      "label": "Josh Homme",
+      "kind": "person"
+    },
+    {
+      "id": "eagles-of-death-metal",
+      "label": "Eagles of Death Metal",
+      "kind": "band"
+    },
+    {
+      "id": "nine-inch-nails",
+      "label": "Nine Inch Nails",
+      "kind": "band"
+    },
+    {
+      "id": "danny-lohner",
+      "label": "Danny Lohner",
+      "kind": "person"
+    },
+    {
+      "id": "jeordie-white",
+      "label": "Jeordie White",
+      "kind": "person"
+    },
+    {
+      "id": "marilyn-manson",
+      "label": "Marilyn Manson",
       "kind": "band"
     }
   ],
@@ -300,6 +339,103 @@
       "rel": "member",
       "source": "https://musicbrainz.org/artist/a89811cc-4514-48b2-b353-dba9debf7055/relationships",
       "by": "Member from 2003 to present",
+      "verified": true
+    },
+    {
+      "from": "dave-grohl",
+      "to": "them-crooked-vultures",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/4bc09c51-5d42-4c93-9ba6-8cc21a0edb8d/relationships",
+      "verified": true
+    },
+    {
+      "from": "john-paul-jones",
+      "to": "them-crooked-vultures",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/4bc09c51-5d42-4c93-9ba6-8cc21a0edb8d/relationships",
+      "verified": true
+    },
+    {
+      "from": "john-paul-jones",
+      "to": "led-zeppelin",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/4490113a-3880-4f5b-a39b-105bfceaed04/relationships"
+    },
+    {
+      "from": "josh-homme",
+      "to": "them-crooked-vultures",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/dbecd515-aac9-4e7b-808e-bca22809c316/relationships"
+    },
+    {
+      "from": "josh-homme",
+      "to": "queens-of-the-stone-age",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/dbecd515-aac9-4e7b-808e-bca22809c316/relationships"
+    },
+    {
+      "from": "josh-homme",
+      "to": "eagles-of-death-metal",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/de11b037-d880-40e0-8901-0397c768c457/relationships",
+      "apple": "https://music.apple.com/us/artist/eagles-of-death-metal/55046883",
+      "verified": true
+    },
+    {
+      "from": "dave-grohl",
+      "to": "nine-inch-nails",
+      "rel": "collaboration",
+      "source": "https://musicbrainz.org/release/44cbff72-9db6-4ad0-b4c8-b14986afc93a",
+      "song": "Various songs from With Teeth",
+      "apple": "https://music.apple.com/us/song/the-collector/1440852038",
+      "verified": true
+    },
+    {
+      "from": "josh-freese",
+      "to": "nine-inch-nails",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/b7ffd2af-418f-4be2-bdd1-22f8b48613da/relationships",
+      "by": "Drums from 2005-2008, 2005-current",
+      "verified": true
+    },
+    {
+      "from": "danny-lohner",
+      "to": "apc",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/136b2664-686f-4ae4-acf9-6f34446636d4/relationships",
+      "by": "Guitars from 2003-2004",
+      "verified": true
+    },
+    {
+      "from": "danny-lohner",
+      "to": "nine-inch-nails",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/136b2664-686f-4ae4-acf9-6f34446636d4/relationships",
+      "by": "Various instruments from 1993 to 2003",
+      "verified": true
+    },
+    {
+      "from": "jeordie-white",
+      "to": "nine-inch-nails",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/ab4625d4-9947-481c-af95-5955b0b13023/relationships",
+      "by": "Various instruments from 2005 to 2007",
+      "verified": true
+    },
+    {
+      "from": "jeordie-white",
+      "to": "apc",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/ab4625d4-9947-481c-af95-5955b0b13023/relationships",
+      "by": "Bass guitar from 2003 to 2004",
+      "verified": true
+    },
+    {
+      "from": "jeordie-white",
+      "to": "marilyn-manson",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/ab4625d4-9947-481c-af95-5955b0b13023/relationships",
+      "by": "(as Twiggy Ramirez) Guitar & Bass from 1994-2002, 2008-2017",
       "verified": true
     }
   ]
