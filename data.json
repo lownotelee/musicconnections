@@ -182,6 +182,31 @@
       "id": "marilyn-manson",
       "label": "Marilyn Manson",
       "kind": "band"
+    },
+    {
+      "id": "the-who",
+      "label": "The Who",
+      "kind": "band"
+    },
+    {
+      "id": "john-mayer-trio",
+      "label": "John Mayer Trio",
+      "kind": "band"
+    },
+    {
+      "id": "pino-palladino",
+      "label": "Pino Palladino",
+      "kind": "person"
+    },
+    {
+      "id": "john-mayer",
+      "label": "John Mayer",
+      "kind": "person"
+    },
+    {
+      "id": "taylor-swift",
+      "label": "Taylor Swift",
+      "kind": "person"
     }
   ],
   "connections": [
@@ -435,7 +460,38 @@
       "to": "marilyn-manson",
       "rel": "member",
       "source": "https://musicbrainz.org/artist/ab4625d4-9947-481c-af95-5955b0b13023/relationships",
-      "by": "(as Twiggy Ramirez) Guitar & Bass from 1994-2002, 2008-2017",
+      "by": "Guitar & Bass from 1994-2002, 2008-2017",
+      "verified": true
+    },
+    {
+      "from": "robertsmith",
+      "to": "thecure",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/69ee3720-a7cb-4402-b48d-a02c366f2bcf/relationships",
+      "verified": true
+    },
+    {
+      "from": "pino-palladino",
+      "to": "nine-inch-nails",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/0dfd6aab-9056-4764-89b0-80bee7c9f998/relationships",
+      "by": "Bassist in 2013",
+      "verified": true
+    },
+    {
+      "from": "pino-palladino",
+      "to": "the-who",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/0dfd6aab-9056-4764-89b0-80bee7c9f998/relationships",
+      "by": "Bassist from 2002-current",
+      "verified": true
+    },
+    {
+      "from": "pino-palladino",
+      "to": "john-mayer-trio",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/0dfd6aab-9056-4764-89b0-80bee7c9f998/relationships",
+      "by": "Bassist & vocalist from 2005-current",
       "verified": true
     }
   ]
