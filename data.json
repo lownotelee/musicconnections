@@ -1,58 +1,292 @@
 {
   "artists": [
-    { "id": "maynardjameskeenan", "label": "Maynard James Keenan", "kind": "person", "aliases": ["MJK"] },
-    { "id": "tool", "label": "Tool", "kind": "band", "apple": "https://music.apple.com/us/artist/tool/140870416" },
-    { "id": "apc", "label": "A Perfect Circle", "kind": "band", "aliases": ["APC"] },
-    { "id": "puscifer", "label": "Puscifer", "kind": "band" },
-    { "id": "ratm", "label": "Rage Against The Machine", "kind": "band", "aliases": ["RATM"] },
-    { "id": "deftones", "label": "Deftones", "kind": "band" },
-    { "id": "chinomoreno", "label": "Chino Moreno", "kind": "person" },
-    { "id": "robertsmith", "label": "Robert Smith", "kind": "person", "apple":"https://music.apple.com/us/artist/robert-smith/1214935" },
-    { "id": "thecure", "label": "The Cure", "kind": "band", "apple":"https://music.apple.com/us/artist/the-cure/566519"},
-    { "id": "crosses", "label": "†††", "kind": "band", "aliases":["crosses"], "apple":"https://music.apple.com/us/artist/crosses/454525863"},
-    { "id": "teamsleep", "label": "Team Sleep", "kind": "band", "apple":"https://music.apple.com/us/artist/team-sleep/59080604"},
-    { "id": "palms", "label": "Palms", "kind": "band", "apple":"https://music.apple.com/us/artist/palms/1143834408"},
-    { "id": "flaminglips", "label": "The Flaming Lips", "kind": "band" }
+    {
+      "id": "maynardjameskeenan",
+      "label": "Maynard James Keenan",
+      "kind": "person",
+      "aliases": [
+        "MJK"
+      ]
+    },
+    {
+      "id": "tool",
+      "label": "Tool",
+      "kind": "band",
+      "apple": "https://music.apple.com/us/artist/tool/140870416"
+    },
+    {
+      "id": "apc",
+      "label": "A Perfect Circle",
+      "kind": "band",
+      "aliases": [
+        "APC"
+      ]
+    },
+    {
+      "id": "puscifer",
+      "label": "Puscifer",
+      "kind": "band"
+    },
+    {
+      "id": "ratm",
+      "label": "Rage Against The Machine",
+      "kind": "band",
+      "aliases": [
+        "RATM"
+      ]
+    },
+    {
+      "id": "deftones",
+      "label": "Deftones",
+      "kind": "band"
+    },
+    {
+      "id": "chinomoreno",
+      "label": "Chino Moreno",
+      "kind": "person"
+    },
+    {
+      "id": "robertsmith",
+      "label": "Robert Smith",
+      "kind": "person",
+      "apple": "https://music.apple.com/us/artist/robert-smith/1214935"
+    },
+    {
+      "id": "thecure",
+      "label": "The Cure",
+      "kind": "band",
+      "apple": "https://music.apple.com/us/artist/the-cure/566519"
+    },
+    {
+      "id": "crosses",
+      "label": "†††",
+      "kind": "band",
+      "aliases": [
+        "crosses"
+      ],
+      "apple": "https://music.apple.com/us/artist/crosses/454525863"
+    },
+    {
+      "id": "teamsleep",
+      "label": "Team Sleep",
+      "kind": "band",
+      "apple": "https://music.apple.com/us/artist/team-sleep/59080604"
+    },
+    {
+      "id": "palms",
+      "label": "Palms",
+      "kind": "band",
+      "apple": "https://music.apple.com/us/artist/palms/1143834408"
+    },
+    {
+      "id": "flaminglips",
+      "label": "The Flaming Lips",
+      "kind": "band"
+    },
+    {
+      "id": "blink-182",
+      "label": "blink-182",
+      "kind": "band",
+      "apple": "https://music.apple.com/us/artist/blink-182/116851"
+    },
+    {
+      "id": "josh-freese",
+      "label": "Josh Freese",
+      "kind": "person"
+    },
+    {
+      "id": "james-iha",
+      "label": "James Iha",
+      "kind": "person"
+    },
+    {
+      "id": "the-smashing-pumpkins",
+      "label": "The Smashing Pumpkins",
+      "kind": "band"
+    },
+    {
+      "id": "devo",
+      "label": "Devo",
+      "kind": "band"
+    },
+    {
+      "id": "guns-n-roses",
+      "label": "Guns N' Roses",
+      "kind": "band"
+    },
+    {
+      "id": "foo-fighters",
+      "label": "Foo Fighters",
+      "kind": "band"
+    },
+    {
+      "id": "dave-grohl",
+      "label": "Dave Grohl",
+      "kind": "person"
+    },
+    {
+      "id": "nirvana",
+      "label": "Nirvana",
+      "kind": "band"
+    },
+    {
+      "id": "them-crooked-vultures",
+      "label": "Them Crooked Vultures",
+      "kind": "band"
+    },
+    {
+      "id": "led-zeppelin",
+      "label": "Led Zeppelin",
+      "kind": "band"
+    },
+    {
+      "id": "queens-of-the-stone-age",
+      "label": "Queens of the Stone Age",
+      "kind": "band"
+    }
   ],
   "connections": [
-    { "from": "maynardjameskeenan", "to": "tool", "rel": "member",
+    {
+      "from": "maynardjameskeenan",
+      "to": "tool",
+      "rel": "member",
       "source": "https://musicbrainz.org/search?query=Tool&type=artist",
-      "addedBy": "@seed", "verified": true },
-    { "from": "chinomoreno", "to": "deftones", "rel": "member",
+      "addedBy": "@seed",
+      "verified": true
+    },
+    {
+      "from": "chinomoreno",
+      "to": "deftones",
+      "rel": "member",
       "source": "https://musicbrainz.org/artist/e61400d1-9434-4abc-ac7a-4f1dad60cfc7",
-      "addedBy": "@seed", "verified": true },
-    { "from": "chinomoreno", "to": "crosses", "rel": "member",
+      "addedBy": "@seed",
+      "verified": true
+    },
+    {
+      "from": "chinomoreno",
+      "to": "crosses",
+      "rel": "member",
       "source": "https://musicbrainz.org/artist/7a10215e-b32f-4b77-b9cc-d90531a3968f",
-      "addedBy": "@seed", "verified": true },
-    { "from": "chinomoreno", "to": "palms", "rel": "member",
+      "addedBy": "@seed",
+      "verified": true
+    },
+    {
+      "from": "chinomoreno",
+      "to": "palms",
+      "rel": "member",
       "source": "https://musicbrainz.org/artist/9c651ba1-59d3-4772-9fed-cd233af44465",
-      "addedBy": "@seed", "verified": true },
-    { "from": "maynardjameskeenan", "to": "apc", "rel": "member",
+      "addedBy": "@seed",
+      "verified": true
+    },
+    {
+      "from": "maynardjameskeenan",
+      "to": "apc",
+      "rel": "member",
       "source": "https://musicbrainz.org/search?query=A+Perfect+Circle&type=artist",
-      "addedBy": "@seed", "verified": true },
-    { "from": "maynardjameskeenan", "to": "puscifer", "rel": "member",
+      "addedBy": "@seed",
+      "verified": true
+    },
+    {
+      "from": "maynardjameskeenan",
+      "to": "puscifer",
+      "rel": "member",
       "source": "https://musicbrainz.org/search?query=Puscifer&type=artist",
-      "addedBy": "@seed", "verified": true },
-    { "from": "maynardjameskeenan", "to": "ratm", "rel": "guest_performer",
+      "addedBy": "@seed",
+      "verified": true
+    },
+    {
+      "from": "maynardjameskeenan",
+      "to": "ratm",
+      "rel": "guest_performer",
       "song": "Know Your Enemy",
       "by": "Rage Against The Machine · guest vocals by Maynard James Keenan",
       "spotify": "https://open.spotify.com/search/Rage%20Against%20The%20Machine%20Know%20Your%20Enemy",
       "apple": "https://music.apple.com/search?term=Rage%20Against%20The%20Machine%20Know%20Your%20Enemy",
       "source": "https://musicbrainz.org/search?query=Know+Your+Enemy+Rage+Against+The+Machine&type=recording",
-      "addedBy": "@fan_submission", "verified": false },
-    { "from": "maynardjameskeenan", "to": "deftones", "rel": "guest_performer",
+      "addedBy": "@fan_submission",
+      "verified": false
+    },
+    {
+      "from": "maynardjameskeenan",
+      "to": "deftones",
+      "rel": "guest_performer",
       "song": "Passenger",
       "by": "Deftones · guest vocals by Maynard James Keenan",
       "spotify": "https://open.spotify.com/search/Deftones%20Passenger",
       "apple": "https://music.apple.com/search?term=Deftones%20Passenger",
       "source": "https://musicbrainz.org/search?query=Passenger+Deftones&type=recording",
-      "addedBy": "@seed", "verified": true },
-    { "from": "maynardjameskeenan", "to": "flaminglips", "rel": "guest_performer", "isCover": true,
+      "addedBy": "@seed",
+      "verified": true
+    },
+    {
+      "from": "maynardjameskeenan",
+      "to": "flaminglips",
+      "rel": "guest_performer",
+      "isCover": true,
       "song": "Being for the Benefit of Mr. Kite!",
       "by": "The Flaming Lips · a Beatles cover, from the Sgt. Pepper's tribute album",
       "spotify": "https://open.spotify.com/search/Flaming%20Lips%20Being%20for%20the%20Benefit%20of%20Mr%20Kite",
       "apple": "https://music.apple.com/search?term=Flaming%20Lips%20Being%20for%20the%20Benefit%20of%20Mr%20Kite",
       "source": "https://musicbrainz.org/search?query=Being+for+the+Benefit+of+Mr+Kite+Flaming+Lips&type=recording",
-      "addedBy": "@seed", "verified": true }
+      "addedBy": "@seed",
+      "verified": true
+    },
+    {
+      "from": "robertsmith",
+      "to": "blink-182",
+      "rel": "collaboration",
+      "source": "https://musicbrainz.org/recording/ffa673ae-ec03-4029-a6ab-c752c26b0f43",
+      "song": "All of This",
+      "by": "Features vocals by Robert Smith",
+      "apple": "https://music.apple.com/us/song/all-of-this-feat-robert-smith/1440846962",
+      "verified": true
+    },
+    {
+      "from": "robertsmith",
+      "to": "crosses",
+      "rel": "collaboration",
+      "source": "https://musicbrainz.org/recording/a60d5006-d5d7-4e85-afd9-c9ad8af4ac45",
+      "song": "Girls Float † Boys Cry",
+      "apple": "https://music.apple.com/us/song/girls-float-boys-cry-feat-robert-smith/1698426276",
+      "verified": true
+    },
+    {
+      "from": "dave-grohl",
+      "to": "nirvana",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/5b11f4ce-a62d-471e-81fc-a69a8278c7da/relationships",
+      "verified": true
+    },
+    {
+      "from": "dave-grohl",
+      "to": "foo-fighters",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/67f66c07-6e61-4026-ade5-7e782fad3a5d/relationships"
+    },
+    {
+      "from": "josh-freese",
+      "to": "foo-fighters",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/67f66c07-6e61-4026-ade5-7e782fad3a5d/relationships",
+      "verified": true
+    },
+    {
+      "from": "james-iha",
+      "to": "the-smashing-pumpkins",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/ba0d6274-db14-4ef5-b28d-657ebde1a396/relationships"
+    },
+    {
+      "from": "josh-freese",
+      "to": "apc",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/1ba97964-8d70-4b33-a361-d1a4ed222672/relationships"
+    },
+    {
+      "from": "josh-freese",
+      "to": "guns-n-roses",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/1ba97964-8d70-4b33-a361-d1a4ed222672/relationships"
+    }
   ]
 }
