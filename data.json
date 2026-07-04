@@ -493,6 +493,22 @@
       "source": "https://musicbrainz.org/artist/0dfd6aab-9056-4764-89b0-80bee7c9f998/relationships",
       "by": "Bassist & vocalist from 2005-current",
       "verified": true
+    },
+    {
+      "from": "john-mayer",
+      "to": "john-mayer-trio",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/144ef525-85e9-40c3-8335-02c32d0861f3/relationships",
+      "verified": true
+    },
+    {
+      "from": "taylor-swift",
+      "to": "john-mayer",
+      "rel": "guest_performer",
+      "source": "https://musicbrainz.org/recording/196f8ef9-d6d3-4541-92df-6694fcf4bf2b",
+      "song": "Half of My Heart",
+      "apple": "https://music.apple.com/us/song/half-of-my-heart/337970492",
+      "verified": true
     }
   ]
 }
