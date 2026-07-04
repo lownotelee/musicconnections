@@ -261,7 +261,7 @@
       "from": "dave-grohl",
       "to": "foo-fighters",
       "rel": "member",
-      "source": "https://musicbrainz.org/artist/67f66c07-6e61-4026-ade5-7e782fad3a5d/relationships"
+      "source": "https://musicbrainz.org/artist/67f66c07-6e61-4026-ade5-7e782fad3a5d/relationships",
       "verified": true
     },
     {
@@ -276,21 +276,21 @@
       "from": "james-iha",
       "to": "the-smashing-pumpkins",
       "rel": "member",
-      "source": "https://musicbrainz.org/artist/ba0d6274-db14-4ef5-b28d-657ebde1a396/relationships"
+      "source": "https://musicbrainz.org/artist/ba0d6274-db14-4ef5-b28d-657ebde1a396/relationships",
       "verified": true
     },
     {
       "from": "josh-freese",
       "to": "apc",
       "rel": "member",
-      "source": "https://musicbrainz.org/artist/1ba97964-8d70-4b33-a361-d1a4ed222672/relationships"
+      "source": "https://musicbrainz.org/artist/1ba97964-8d70-4b33-a361-d1a4ed222672/relationships",
       "verified": true
     },
     {
       "from": "josh-freese",
       "to": "guns-n-roses",
       "rel": "member",
-      "source": "https://musicbrainz.org/artist/1ba97964-8d70-4b33-a361-d1a4ed222672/relationships"
+      "source": "https://musicbrainz.org/artist/1ba97964-8d70-4b33-a361-d1a4ed222672/relationships",
       "by": "Drummer from 1997 to 2000",
       "verified": true
     },
