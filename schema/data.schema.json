@@ -28,6 +28,10 @@
           "description": "Stable lowercase slug, no spaces. Never change it once connections point at it."
         },
         "label": { "type": "string", "minLength": 1, "description": "Display name." },
+        "disambiguation": {
+          "type": "string",
+          "description": "Short note to tell same-named artists apart, e.g. 'Seattle grunge band' vs '1960s British psych band'. Shown next to the name in search. Recommended whenever two artists share a name."
+        },
         "kind": { "enum": ["person", "band"] },
         "mbid": {
           "type": "string",
@@ -38,6 +42,18 @@
           "type": "array",
           "items": { "type": "string" },
           "description": "Alternate names/abbreviations to help search (e.g. 'RATM')."
+        },
+        "spotify": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "open\\.spotify\\.com",
+          "description": "Optional link to the artist's own Spotify page (open.spotify.com/artist/...)."
+        },
+        "apple": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "music\\.apple\\.com",
+          "description": "Optional link to the artist's own Apple Music page."
         }
       }
     },
