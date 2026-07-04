@@ -1,0 +1,115 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/lownotelee/musicconnections/main/schema/data.schema.json",
+  "title": "Collab Graph data file",
+  "description": "Validates the whole dataset: a list of artists and a list of connections. Wire this into CI (e.g. ajv) so malformed submissions are rejected automatically.",
+  "type": "object",
+  "required": ["artists", "connections"],
+  "additionalProperties": false,
+  "properties": {
+    "artists": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/artist" }
+    },
+    "connections": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/connection" }
+    }
+  },
+  "definitions": {
+    "artist": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "kind"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$",
+          "description": "Stable lowercase slug, no spaces. Never change it once connections point at it."
+        },
+        "label": { "type": "string", "minLength": 1, "description": "Display name." },
+        "kind": { "enum": ["person", "band"] },
+        "mbid": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "description": "MusicBrainz ID — the durable global identifier. Strongly recommended."
+        },
+        "aliases": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Alternate names/abbreviations to help search (e.g. 'RATM')."
+        }
+      }
+    },
+    "connection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from", "to", "rel", "source"],
+      "properties": {
+        "from": {
+          "type": "string",
+          "description": "Artist id. For 'member' this is the person; for a performance credit this is the guest/contributor."
+        },
+        "to": {
+          "type": "string",
+          "description": "Artist id. For 'member' this is the band; for a performance credit this is the host act whose track it is."
+        },
+        "rel": {
+          "enum": ["member", "collaboration", "guest_performer"],
+          "description": "v1 scope: direct artist-to-artist relationships only. cover / sample / remix / writer_credit / producer_credit are reserved for a later, separate class."
+        },
+        "song": {
+          "type": "string",
+          "description": "The track. Required for collaboration and guest_performer; omit for member."
+        },
+        "by": {
+          "type": "string",
+          "description": "Optional human-readable credit line / context shown in the panel."
+        },
+        "source": {
+          "type": "string",
+          "format": "uri",
+          "not": { "pattern": "open\\.spotify\\.com|music\\.apple\\.com|youtube\\.com|youtu\\.be" },
+          "description": "Link to the CREDIT that proves who performed (MusicBrainz recording/relationship, Apple Music credits, liner notes). A bare streaming link proves the song exists, not who is on it, so those domains are rejected here."
+        },
+        "spotify": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "open\\.spotify\\.com",
+          "description": "Optional 'Copy Song Link' share URL for the track."
+        },
+        "apple": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "music\\.apple\\.com",
+          "description": "Optional Apple Music share URL for the track."
+        },
+        "isCover": {
+          "type": "boolean",
+          "description": "True when the performance is of a song originated by a third party. The connection is still real; this flag lets viewers filter it out."
+        },
+        "addedBy": {
+          "type": "string",
+          "description": "Contributor handle. Usually filled in from the submitter."
+        },
+        "verified": {
+          "type": "boolean",
+          "description": "Set by MAINTAINERS ONLY after checking the source. Contributors must not set this true; new submissions default to false and render dimmed until reviewed."
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "rel": { "enum": ["collaboration", "guest_performer"] } } },
+          "then": { "required": ["song"] }
+        },
+        {
+          "if": { "properties": { "rel": { "const": "member" } } },
+          "then": {
+            "not": { "required": ["song"] },
+            "description": "Membership is a structural relationship, not a track, so it carries no song."
+          }
+        }
+      ]
+    }
+  }
+}

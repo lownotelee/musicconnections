@@ -1,0 +1,38 @@
+# Data License
+
+The **dataset** in this project — `data.json` and any exported data derived from
+it — is licensed under the **Creative Commons Attribution-ShareAlike 4.0
+International License (CC BY-SA 4.0)**.
+
+Full legal text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+Plain-language summary: https://creativecommons.org/licenses/by-sa/4.0/
+
+(The project's **code** is licensed separately under the MIT License — see `LICENSE`.)
+
+## What this means in practice
+
+You are free to share and adapt the data, for any purpose including commercially,
+as long as you:
+
+- **Attribute** — credit this project and link back to it, and indicate if you
+  made changes.
+- **Share alike** — if you build on or adapt the data, you must release your
+  version under this same CC BY-SA 4.0 license. The data can't be folded into a
+  closed, proprietary dataset.
+
+## How to attribute
+
+> Data from [Music Connections](https://github.com/lownotelee/musicconnections), licensed under CC BY-SA 4.0.
+
+## A note on sources
+
+Some records are seeded or verified from [MusicBrainz](https://musicbrainz.org),
+whose core data is released under CC0 (public domain). CC0 data can be
+incorporated here without conflict. Where a connection's evidence comes from a
+third party (Apple Music credits, liner notes, etc.), that link is a *citation*
+of the source, not a claim over the source's own content.
+
+## Contributions
+
+By contributing data to this project, you agree to release your contribution
+under CC BY-SA 4.0 so it can be shared on the same terms as the rest of the dataset.

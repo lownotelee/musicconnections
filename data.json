@@ -1,0 +1,43 @@
+{
+  "artists": [
+    { "id": "maynard", "label": "Maynard James Keenan", "kind": "person", "aliases": ["MJK"] },
+    { "id": "tool", "label": "Tool", "kind": "band" },
+    { "id": "apc", "label": "A Perfect Circle", "kind": "band", "aliases": ["APC"] },
+    { "id": "puscifer", "label": "Puscifer", "kind": "band" },
+    { "id": "ratm", "label": "Rage Against The Machine", "kind": "band", "aliases": ["RATM"] },
+    { "id": "deftones", "label": "Deftones", "kind": "band" },
+    { "id": "flaminglips", "label": "The Flaming Lips", "kind": "band" }
+  ],
+  "connections": [
+    { "from": "maynard", "to": "tool", "rel": "member",
+      "source": "https://musicbrainz.org/search?query=Tool&type=artist",
+      "addedBy": "@seed", "verified": true },
+    { "from": "maynard", "to": "apc", "rel": "member",
+      "source": "https://musicbrainz.org/search?query=A+Perfect+Circle&type=artist",
+      "addedBy": "@seed", "verified": true },
+    { "from": "maynard", "to": "puscifer", "rel": "member",
+      "source": "https://musicbrainz.org/search?query=Puscifer&type=artist",
+      "addedBy": "@seed", "verified": true },
+    { "from": "maynard", "to": "ratm", "rel": "guest_performer",
+      "song": "Know Your Enemy",
+      "by": "Rage Against The Machine · guest vocals by Maynard James Keenan",
+      "spotify": "https://open.spotify.com/search/Rage%20Against%20The%20Machine%20Know%20Your%20Enemy",
+      "apple": "https://music.apple.com/search?term=Rage%20Against%20The%20Machine%20Know%20Your%20Enemy",
+      "source": "https://musicbrainz.org/search?query=Know+Your+Enemy+Rage+Against+The+Machine&type=recording",
+      "addedBy": "@fan_submission", "verified": false },
+    { "from": "maynard", "to": "deftones", "rel": "guest_performer",
+      "song": "Passenger",
+      "by": "Deftones · guest vocals by Maynard James Keenan",
+      "spotify": "https://open.spotify.com/search/Deftones%20Passenger",
+      "apple": "https://music.apple.com/search?term=Deftones%20Passenger",
+      "source": "https://musicbrainz.org/search?query=Passenger+Deftones&type=recording",
+      "addedBy": "@seed", "verified": true },
+    { "from": "maynard", "to": "flaminglips", "rel": "guest_performer", "isCover": true,
+      "song": "Being for the Benefit of Mr. Kite!",
+      "by": "The Flaming Lips · a Beatles cover, from the Sgt. Pepper's tribute album",
+      "spotify": "https://open.spotify.com/search/Flaming%20Lips%20Being%20for%20the%20Benefit%20of%20Mr%20Kite",
+      "apple": "https://music.apple.com/search?term=Flaming%20Lips%20Being%20for%20the%20Benefit%20of%20Mr%20Kite",
+      "source": "https://musicbrainz.org/search?query=Being+for+the+Benefit+of+Mr+Kite+Flaming+Lips&type=recording",
+      "addedBy": "@seed", "verified": true }
+  ]
+}
