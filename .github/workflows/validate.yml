@@ -1,0 +1,32 @@
+name: Validate data
+
+# Runs on any PR that touches the dataset or the rules, and on pushes to main.
+# A failing check blocks the merge button, so bad data never lands.
+on:
+  pull_request:
+    paths:
+      - "data.json"
+      - "schema/**"
+      - "scripts/validate.py"
+      - ".github/workflows/validate.yml"
+  push:
+    branches: [main]
+    paths:
+      - "data.json"
+      - "schema/**"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install validator dependency
+        run: pip install jsonschema
+
+      - name: Validate data.json
+        run: python scripts/validate.py
