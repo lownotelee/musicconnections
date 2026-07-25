@@ -15,6 +15,31 @@
       "apple": "https://music.apple.com/us/artist/tool/140870416"
     },
     {
+      "id": "karnivool",
+      "label": "Karnivool",
+      "kind": "band"
+    },
+    {
+      "id": "jonstockman",
+      "label": "Jon Stockman",
+      "kind": "person"
+    },
+    {
+      "id": "luciusborich",
+      "label": "Lucius Borich",
+      "kind": "person"
+    },
+    {
+      "id": "floatingme",
+      "label": "Floating Me",
+      "kind": "band"
+    },
+    {
+      "id": "cog",
+      "label": "Cog",
+      "kind": "band"
+    },
+    {
       "id": "apc",
       "label": "A Perfect Circle",
       "kind": "band",
