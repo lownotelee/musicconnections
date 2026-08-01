@@ -272,6 +272,48 @@
       "id": "opeth",
       "label": "Opeth",
       "kind": "band"
+    },
+    {
+      "id": "kavinsky",
+      "label": "Kavinsky",
+      "kind": "band",
+      "disambiguation": "French synthwave project",
+      "apple": "https://music.apple.com/au/artist/kavinsky/115429828"
+    },
+    {
+      "id": "the-weeknd",
+      "label": "The Weeknd",
+      "kind": "band",
+      "apple": "https://music.apple.com/au/artist/the-weeknd/479756766"
+    },
+    {
+      "id": "daft-punk",
+      "label": "Daft Punk",
+      "kind": "band",
+      "disambiguation": "French house band",
+      "apple": "https://music.apple.com/au/artist/daft-punk/5468295"
+    },
+    {
+      "id": "pharrell-williams",
+      "label": "Pharrell Williams",
+      "kind": "person",
+      "apple": "https://music.apple.com/au/artist/pharrell-williams/1361068"
+    },
+    {
+      "id": "n-e-r-d",
+      "label": "N.E.R.D",
+      "kind": "band",
+      "apple": "https://music.apple.com/au/artist/n-e-r-d/626510"
+    },
+    {
+      "id": "julian-casablancas",
+      "label": "Julian Casablancas",
+      "kind": "person"
+    },
+    {
+      "id": "the-strokes",
+      "label": "The Strokes",
+      "kind": "band"
     }
   ],
   "connections": [
@@ -638,6 +680,42 @@
       "to": "opeth",
       "rel": "member",
       "source": "https://musicbrainz.org/artist/c14b4180-dc87-481e-b17a-64e4150f90f6/relationships",
+      "verified": true
+    },
+    {
+      "from": "the-weeknd",
+      "to": "kavinsky",
+      "rel": "guest_performer",
+      "source": "https://musicbrainz.org/recording/b933d4cb-a477-4b7c-a211-a0021dd6fc20",
+      "song": "Odd Look",
+      "by": "Guest vocals by The Weeknd",
+      "apple": "https://music.apple.com/au/album/odd-look-feat-the-weeknd/1440860916?i=1440862032",
+      "verified": true
+    },
+    {
+      "from": "daft-punk",
+      "to": "the-weeknd",
+      "rel": "guest_performer",
+      "source": "https://musicbrainz.org/recording/911e4813-56ea-4490-8fcd-cc3dcd0ae7ca",
+      "song": "I Feel It Coming",
+      "apple": "https://music.apple.com/au/album/i-feel-it-coming-feat-daft-punk/1440871397?i=1440872309",
+      "verified": true
+    },
+    {
+      "from": "julian-casablancas",
+      "to": "the-strokes",
+      "rel": "member",
+      "source": "https://musicbrainz.org/artist/c5ce487b-0462-444e-a184-4de0fef7e028/relationships",
+      "verified": true
+    },
+    {
+      "from": "julian-casablancas",
+      "to": "daft-punk",
+      "rel": "guest_performer",
+      "source": "https://musicbrainz.org/recording/dbc0da50-4bc6-4230-9e7b-136b5dc2b31a",
+      "song": "Instant Crush",
+      "by": "Guest vocals by Julian Casablancas",
+      "apple": "https://music.apple.com/au/album/instant-crush/617154241?i=617154362",
       "verified": true
     }
   ]
